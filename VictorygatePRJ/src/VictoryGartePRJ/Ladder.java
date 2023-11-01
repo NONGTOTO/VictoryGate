@@ -13,7 +13,7 @@ public class Ladder extends Rectangle {
 		g.fillRect(x, y+40, width, height);
 		g.setColor(Color.black);
 		for (int i = 0; i < 101; i=i+20) {
-			//black rectangles of ladders
+			
 			g.fillRect((x+15), (y+40+i), width/2, height/10); } 
 		g.setColor(Color.cyan);
 	}

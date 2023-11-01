@@ -45,7 +45,7 @@ public class Player {
 
 	public void keyReleased(int k) {	}
 
-	public Player(int w, int h) {  //POSITION OF MARIO
+	public Player(int w, int h) {  
 		x = 100; // where horizontally the player character will start
 		y = 700; // where vertically the player character will start
 		this.w = w;

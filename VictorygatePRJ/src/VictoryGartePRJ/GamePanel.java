@@ -11,7 +11,7 @@ public class GamePanel extends JPanel implements KeyListener, Runnable { //Panel
 	protected Manager gamestates; 
 
 	public GamePanel() {
-		setPreferredSize(new Dimension(860, 800)); //size of the window of the game
+		setPreferredSize(new Dimension(1200, 1200)); 
 		addKeyListener(this);
 		setFocusable(true);
 		start();    }        //calls start
@@ -25,7 +25,7 @@ public class GamePanel extends JPanel implements KeyListener, Runnable { //Panel
 		gamestates = new Manager(); 
 		long begin, wait;
 		while (running = true) { // when the game is running, this ploop controls what happens in the gameloop
-			begin = System.nanoTime(); //nano 10^-9
+			begin = System.nanoTime(); 
 			TickCounter = TickCounter + 1;
 			tick();
 			repaint(); // responsible for the graphics in the gameloop

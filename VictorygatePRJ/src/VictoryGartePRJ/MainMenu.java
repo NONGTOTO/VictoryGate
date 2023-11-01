@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 
 public class MainMenu extends AbstractState {
-	protected Characters chara; //Donkey Kong character only
+	protected Characters chara; 
 	public MainMenu(Manager gamestates) {
 		super(gamestates);
 	}
@@ -11,25 +11,25 @@ public class MainMenu extends AbstractState {
 	protected int select = 0;
 
 	public void initial() {
-		chara = new Characters(655, 360); //draws Donkey Kong
+		chara = new Characters(655, 360); 
 	}
 
 	public void keyPressed(int kp) {
-		if (kp == KeyEvent.VK_DOWN) { //if down arrow key pressed
-			select = select + 1; //goes through the options
+		if (kp == KeyEvent.VK_DOWN) { 
+			select = select + 1; 
 			if (select >= 3) {
 				select = 2;
 			}
-		} else if (kp == KeyEvent.VK_UP) { //if up arrow key pressed
-			select = select - 1; //goes through the options 
+		} else if (kp == KeyEvent.VK_UP) { 
+			select = select - 1; 
 			if (2 > select) {
 				select = 0;
 			}
 		}
-		//option selection/confirming - actions
-		if (kp == KeyEvent.VK_ENTER) { //if enter key pressed
-			if (select == 0) { // play
-				gamestates.stages.push(new Stage1(gamestates));//taken to level
+		
+		if (kp == KeyEvent.VK_ENTER) { 
+			if (select == 0) { 
+				gamestates.stages.push(new Stage1(gamestates));
 			} else if (select == 2) { // exit choice on menu
 				System.exit(0);
 			}
@@ -39,23 +39,22 @@ public class MainMenu extends AbstractState {
 	public void keyReleased(int kr) {	}
 
 	protected void draw(Graphics g) {		
-		// background
-		g.setColor(Color.black);
-		g.fillRect(0, 0, 1900, 800); //size of black background
 		
 		g.setColor(Color.black);
-		g.fillRect(610, 250, 100, 200); //hides Pauline
+		g.fillRect(0, 0, 1900, 800); 
+		
+		g.setColor(Color.black);
+		g.fillRect(610, 250, 100, 200);
 		g.setFont(new Font("Helvetica", Font.BOLD, 100));
 		g.setColor(Color.magenta);
 		g.drawString("The VictoryGate", 10, 200);
 		g.drawString("", 40, 250);
 		g.setColor(Color.black);
-		g.fillRect(0, 800, 2500, 2500); //fullscreen
-		g.fillRect(900, 0, 2500, 2500); //fullscreen
+		g.fillRect(0, 800, 2500, 2500); 
+		g.fillRect(900, 0, 2500, 2500); 
 		
-		// menu choices and colours
 		for (int j = 0; 3 > j; j++) {
-			int xpoint[] = {525,545,500,545}; //x co-ords of both selection arrows
+			int xpoint[] = {525,545,500,545}; 
 		    int ypoint[] = {430,420,430,440};//y co-ords of arrow by "Play"
 			int ypoint2[] = {570,560,570,580};//y co-ords of arrow by "Exit"
 			if (select == j) {

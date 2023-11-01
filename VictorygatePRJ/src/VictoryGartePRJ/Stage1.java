@@ -17,9 +17,9 @@ public class Stage1 extends AbstractState {
     
     public Stage1(Manager gamestates) { 
         super(gamestates); 
-        GamePanel.TickCounter = 0; //starts the tickcounter after the player has pressed "Play" on start menu 
-        if (win ==1) { //when player touches Pauline win is 1 
-            gamestates.stages.push(new GameOverScreen(gamestates)); //if player wins, taken to win screen
+        GamePanel.TickCounter = 0;
+        if (win ==1) { 
+            gamestates.stages.push(new GameOverScreen(gamestates)); 
         }    
     }
 

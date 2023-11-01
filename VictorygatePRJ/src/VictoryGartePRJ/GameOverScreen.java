@@ -11,8 +11,8 @@ public class GameOverScreen extends AbstractState {
 
 	String[] choices2 = { "Restart", " ", "Exit Game" }; 
 	protected int select = 0;
-	protected Characters chara; //characters (Pauline)
-	protected Characters chara2; //characters (DK)
+	protected Characters chara; 
+	protected Characters chara2; 
 	
 	public void initial() {
 		chara = new Characters(120, 700); //draws characters in Characters Class onto end menu

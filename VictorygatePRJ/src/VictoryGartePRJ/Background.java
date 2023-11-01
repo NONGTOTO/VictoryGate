@@ -6,7 +6,7 @@ public class Background extends Rectangle  {
 	
 	
 	public Background(int x2, int y2) { // constructor
-setBounds(x2, y2, 1200, 1200); //size of background (1200, 1200)
+	setBounds(x2, y2, 1200, 1200);
 	}
 
 	public void draw(Graphics g) {

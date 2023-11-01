@@ -3,15 +3,15 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class EnemyBarrel {
-	protected int platformlevel = 0;//variable for when barrel direction
+	protected int platformlevel = 0;
 	protected boolean left = false; 
 	protected boolean right = false;
 	protected boolean barrelfall;
 	protected double x, y;
 	protected static int w;
 	protected static int h;
-	protected double downvelocity = 6; // variable controlling falling
-	protected double currentfallvel = 0.2; // current downvelocity
+	protected double downvelocity = 6; 
+	protected double currentfallvel = 0.2; 
 	Rectangle r1 = new Rectangle((int) x, (int) y, w, h); 
 	
     public void draw(Graphics g) {
@@ -26,12 +26,12 @@ public class EnemyBarrel {
 
     
 
-    // You can add additional drawing for the shine if needed
+    
 	}
 
 	public EnemyBarrel(int w, int h) {
-		x = 240;//where horizontally the enemy will start
-		y = 120; //where vertically the barrels will start
+		x = 240;
+		y = 120; 
 		this.w = w;
 		this.h = h;
 	}
@@ -42,7 +42,7 @@ public class EnemyBarrel {
 		int inty = (int) y; // change y to an int
 		
 		for (int j = 0; platforms.length > j; j++) {
-        //barrel falls same way as player
+      
 			if ((Collide.playerPlatformCollide(
 				new Point(intx + (int) AbstractState.yOffset, inty + h + (int) AbstractState.yOffset),platforms[j])
 				|| Collide.playerPlatformCollide(new Point(intx + w + (int) AbstractState.yOffset, inty + (int) AbstractState.yOffset),platforms[j])
@@ -59,27 +59,27 @@ public class EnemyBarrel {
 			}
 		}
 		
-		//cause barrel to go right when it gets to the platform below
+		
 		if ((platformlevel > 260) && (1240 > platformlevel)) {
 			x = x + 2; //speed of barrel (right)
 		}		
 		if ((2238 < platformlevel) && (3185 > platformlevel)) {
 			x = x + 2;
 		}
-		if (platformlevel == 4050) { //so when barrels get to the oil drum they are put back to the spawn point
+		if (platformlevel == 4050) { 
 			x = 240;
 			y = 90;
 			platformlevel = 0;
 		}
 		
-		//causes barrel to go left 
+		
 		if ((Player.jump == true) || (Player.fall == true)) {
-			x = x - 1; //speed of barrel (1) left
+			x = x - 1; 
 		}
 
-		//causes barrel to fall
+		
 		if (barrelfall == true) {
-			y = y + currentfallvel / 2; // fall speed
+			y = y + currentfallvel / 2; 
 			if (downvelocity > currentfallvel) {
 				currentfallvel = currentfallvel + 0.1;
 		}
