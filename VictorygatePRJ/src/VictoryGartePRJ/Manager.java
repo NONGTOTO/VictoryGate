@@ -1,18 +1,16 @@
 package VictoryGartePRJ;
 import java.awt.*;
 import java.util.*;
-//class used to update the states in the game
+
 public class Manager {
 	public static boolean restarted;
-	//whichever state is on top of stack is updated
+	
 	public Stack<AbstractState> stages;
 	public Manager() { // constructor
-		stages = new Stack<AbstractState>();//creates a stack of game states
-		stages.push(new MainMenu(this));//adds start menu
+		stages = new Stack<AbstractState>();
+		stages.push(new MainMenu(this));
 	}
-	// methods here implemented into the GamePanel class
-	//looks at top of stack and updates one at top of stack
-	//peek used to look at methods on top of stack 
+	
 	public void keyPressed(int P) {
 		stages.peek().keyPressed(P); //return value on top
 	}

@@ -4,7 +4,11 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.*;
 //level of game 
+
 public class Stage1 extends AbstractState { 
+    private long startTime;
+    private static int MAX_TIME = 180; // 3 minutes in seconds
+    private int timeRemaining = MAX_TIME;
     public static int win = 0; 
     public static int lives = 3; 
     public static int score = 0; 
@@ -15,8 +19,12 @@ public class Stage1 extends AbstractState {
     protected Player mario; // new player  
     protected EnemyBarrel[] barrels;//enemy barrels 
     
+
+
+    
     public Stage1(Manager gamestates) { 
         super(gamestates); 
+        startTime = System.currentTimeMillis();
         GamePanel.TickCounter = 0;
         if (win ==1) { 
             gamestates.stages.push(new GameOverScreen(gamestates)); 
@@ -24,6 +32,10 @@ public class Stage1 extends AbstractState {
     }
 
     public void tick() { 
+       
+        long elapsedTime = (System.currentTimeMillis() - startTime) / 1000;
+        timeRemaining = Math.max(0, MAX_TIME - (int) elapsedTime);
+        
         for (int j = 0; platforms.length > j; j++) { 
             platforms[j].tick(); 
         } 
@@ -68,10 +80,20 @@ public class Stage1 extends AbstractState {
 		  }
     	  //score rectangle (rectangle above each barrel)
     	  Rectangle r2 = new Rectangle((int)barrels[f].x-2, (int)barrels[f].y-70, 35, 90); //score rectangle
-    	  if   ( r2.contains((int)Player.x+15, (int)Player.y+15)   )
-    	  {  System.out.println("Score increase");     	  
+    	   if   ( r2.contains((int)Player.x+15, (int)Player.y+15)   )
+    	  {  System.out.println("Score increase");     	 
+           
 		     score = score + 50; 
+              
+             
 		  }
+        }
+        if (timeRemaining > 0) {
+            timeRemaining--;
+        } else {
+            // Time has run out, handle game over logic
+            lives = 0;
+            gamestates.stages.push(new GameOverScreen(gamestates));
         }
       }
     
@@ -143,6 +165,12 @@ public class Stage1 extends AbstractState {
         	barrels[8].draw(g); }
         if (GamePanel.TickCounter>5200) { 
         	barrels[9].draw(g);  } 
+
+
+            //time
+            g.setColor(Color.white);
+            g.setFont(new Font("Helvetica", Font.BOLD, 20));
+            g.drawString("Time: " + timeRemaining, 450, 30);
          
         for (int o = 0; charas.length > o; o++) { // draws characters onto level (Pauline) 
             charas[o].draw(g);
