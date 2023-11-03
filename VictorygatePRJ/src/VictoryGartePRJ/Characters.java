@@ -16,12 +16,12 @@ public class Characters extends Rectangle {
 						
 	
 	g.setColor(Color.magenta); 
-	g.fillRect(x + 8, y - 78, width + 20, 90); 
-	g.fillRect(x + 8, y - 75, width + 20, height * 4); 
+	g.fillRect(x -4, y - 78, width + 20, 90); 
+	g.fillRect(x -4, y - 75, width + 20, height * 4); 
 
 
 	g.setColor(Color.yellow); 
-	g.fillRect(x + 13, y - 45, 10, 10); 
+	g.fillRect(x + 3, y - 35, 10, 10); 
 
 
 

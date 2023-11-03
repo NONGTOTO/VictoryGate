@@ -15,7 +15,7 @@ public class Stage1 extends AbstractState {
     protected Background background; // black background 
     protected Platform[] platforms; // platforms 
     protected Ladder[] ladders; // ladders 
-    protected Characters[] charas; //characters (Pauline) 
+    protected Characters[] charas; 
     protected Player mario; // new player  
     protected EnemyBarrel[] barrels;//enemy barrels 
     
@@ -105,28 +105,27 @@ public class Stage1 extends AbstractState {
             barrels[i] = new EnemyBarrel(30, 30); //creates barrel1 //sizes 
         } 
         charas = new Characters[1];  
-        charas[0] = new Characters(580, 140); //Position of all characters and oil drum
+        charas[0] = new Characters(580, 140); 
         ladders = new Ladder[4];  
-        // positions of ladders 
+        
         ladders[0] = new Ladder(620, 600); 
         ladders[1] = new Ladder(300, 450);  
         ladders[2] = new Ladder(720, 300); 
         ladders[3] = new Ladder(420, 150); 
          
         platforms = new Platform[10];  
-        // positions of platforms 
-        platforms[0] = new Platform(-50, 750); // bottom platform 
-        platforms[1] = new Platform(350, 750); // bottom platform right  
-        platforms[2] = new Platform(150, 600); /// left platform 1 
-        platforms[3] = new Platform(250, 450); // right platform 1 
-        platforms[4] = new Platform(150, 300); // left platform 2 
-        platforms[5] = new Platform(250, 150); // right platform 2 - ending platform //where DK & Pauline to be drawn 
-        //off-screen platforms 
-        //lower platforms need to be more left/right than others 
-        platforms[6] = new Platform(-450, 600); /// left platform 1  //400left of platform on screen 
-        platforms[7] = new Platform(450, 450); // right platform 1  //400right of platform on screen 
-        platforms[8] = new Platform(-450, 300); // left platform 2  //400left of platform on screen 
-        platforms[9] = new Platform(450, 150); // ending platform  //removed for fullscreen mode
+        
+        platforms[0] = new Platform(-50, 750); 
+        platforms[1] = new Platform(350, 750); 
+        platforms[2] = new Platform(150, 600); 
+        platforms[3] = new Platform(250, 450); 
+        platforms[4] = new Platform(150, 300); 
+        platforms[5] = new Platform(250, 150); 
+       
+        platforms[6] = new Platform(-450, 600); 
+        platforms[7] = new Platform(450, 450);  
+        platforms[8] = new Platform(-450, 300); 
+        platforms[9] = new Platform(450, 150); 
     } 
  
     public void keyPressed(int k) { 
@@ -139,8 +138,8 @@ public class Stage1 extends AbstractState {
  
     protected void draw(Graphics g) { 
         background.draw(g); 
-        g.setColor(Color.black); //fills the empty screen with black background
-		g.fillRect(0, 800, 2500, 2500); //fullscreen
+        g.setColor(Color.black); 
+		g.fillRect(0, 800, 2500, 2500); 
 		g.fillRect(1200, 0, 2500, 2500); //fullscreen
         for (int j = 0; platforms.length > j; j++) { // draws the platforms 
             platforms[j].draw(g); } 
@@ -172,27 +171,27 @@ public class Stage1 extends AbstractState {
             g.setFont(new Font("Helvetica", Font.BOLD, 20));
             g.drawString("Time: " + timeRemaining, 450, 30);
          
-        for (int o = 0; charas.length > o; o++) { // draws characters onto level (Pauline) 
+        for (int o = 0; charas.length > o; o++) { 
             charas[o].draw(g);
-            g.setColor(Color.white);//text for lives and score at top of screen
+            g.setColor(Color.white);
 		    g.setFont(new Font("Helvetica", Font.BOLD, 20));
-			g.drawString("Lives: " + lives, 780, 20);//text for lives & showing no. of lives 
+			g.drawString("Lives: " + lives, 780, 20);
 			g.setColor(Color.magenta);
 		    g.setFont(new Font("Helvetica", Font.BOLD, 20));
-			g.drawString("SCORE", 10, 25);//text for SCORE text 
+			g.drawString("SCORE", 10, 25);
 			g.setColor(Color.white);
-			g.drawString("000" + score, 20, 50);//text showing score
+			g.drawString("000" + score, 20, 50);
 			
-			if (win ==1) { //player taken to end screen
-                gamestates.stages.push(new GameOverScreen(gamestates)); // takes to end screen  
-            } //if player out of lives then GAME OVER
-            if (lives ==0) { //when character loses game over screen
-            	gamestates.stages.push(new GameOverScreen(gamestates)); // takes to end screen
+			if (win ==1) { 
+                gamestates.stages.push(new GameOverScreen(gamestates)); 
+            } 
+            if (lives ==0) { 
+            	gamestates.stages.push(new GameOverScreen(gamestates)); 
             } 
         } 
-        mario.draw(g); // draws the character 
+        mario.draw(g); 
         
-      //for platform fall off
+      
         if (Player.y >= 850) {
         	lives = lives -1; 
         	Player.y = 700;

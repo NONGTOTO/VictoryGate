@@ -9,7 +9,7 @@ public class Collide {
 	public static boolean playerLadderCollide(Point playerPoint, Ladder l1) 
 	{	return l1.contains(playerPoint); 	}
 	// checks if area on player has reached Pauline
-	public static boolean playerPaulineCollide(Point playerPoint, Characters c1) 
+	public static boolean playerDoorCollide(Point playerPoint, Characters c1) 
 	{	return c1.contains(playerPoint); 	}
 	//meant to check if area in barrels
 	public static boolean playerBarrelCollide(Point playerPoint, EnemyBarrel b1) 

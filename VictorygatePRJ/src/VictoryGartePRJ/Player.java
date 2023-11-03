@@ -19,7 +19,7 @@ public class Player {
 	protected double downvelocity = 5; // variable controlling falling
 	protected double currentfallvel = 1; // current downvelocity 
 	
-	public void keyPressed(int k) { //make flow more smoothly
+	public void keyPressed(int k) { 
 		if (k == KeyEvent.VK_LEFT || k ==KeyEvent.VK_A) {
 			if (jump) {
 				x = x - 30;
@@ -52,7 +52,7 @@ public class Player {
 		this.h = h;
 	}
 
-	public void draw(Graphics g) { //draws graphics opposite way if player going left
+	public void draw(Graphics g) { 
 		g.setColor(Color.green);//shoes of Player character
 		g.fillRect((int) x+2-(leftspriteint*2), (int) y+13, w/3, h/2); 
 		g.fillRect((int) x+20-(leftspriteint*2), (int) y+13, w/3, h/2); 
@@ -120,13 +120,13 @@ public class Player {
 		}
 	}
 	
-	//allows when player goes near Pauline to win
+	
 	public void tick(Characters[] charas) {
 		int inty2 = (int) y; 
 		int intx2 = (int) x; 
 		for (int i = 0; charas.length > i; i++) {
 			// bottom of player collide with Pauline
-			if ( Collide.playerPaulineCollide(new Point(intx2 + (int) AbstractState.yOffset + w, 
+			if ( Collide.playerDoorCollide(new Point(intx2 + (int) AbstractState.yOffset + w, 
 						inty2 + h + (int) AbstractState.yOffset),
 							charas[i])) {
 				Stage1.win = 1;

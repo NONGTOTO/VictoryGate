@@ -10,7 +10,7 @@ public class Main {
 		JFrame gameframe;
 
 		gameframe = new JFrame("The Victory Gate");//name on the game window
-		//terminates program on closed
+		
 		gameframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		gameframe.setLayout(new BorderLayout());
 		gameframe.add(new GamePanel(), (BorderLayout.CENTER));
