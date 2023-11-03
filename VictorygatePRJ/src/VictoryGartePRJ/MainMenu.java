@@ -47,7 +47,7 @@ public class MainMenu extends AbstractState {
 		g.fillRect(610, 250, 100, 200);
 		g.setFont(new Font("Helvetica", Font.BOLD, 100));
 		g.setColor(Color.magenta);
-		g.drawString("The VictoryGate", 10, 200);
+		g.drawString("The VictoryGate", 100, 200);
 		g.drawString("", 40, 250);
 		g.setColor(Color.black);
 		g.fillRect(0, 800, 2500, 2500); 
