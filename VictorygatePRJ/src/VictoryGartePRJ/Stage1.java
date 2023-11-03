@@ -7,7 +7,7 @@ import java.io.*;
 
 public class Stage1 extends AbstractState { 
     private long startTime;
-    private static int MAX_TIME = 180; // 3 minutes in seconds
+    private static int MAX_TIME = 60; // 1 minutes in seconds
     private int timeRemaining = MAX_TIME;
     public static int win = 0; 
     public static int lives = 3; 
