@@ -21,12 +21,6 @@ public class EnemyBarrel {
     g.setFont(font);
     g.drawString("F", (int) x + w/4, (int) y + h/2);
     g.setColor(Color.magenta); 
-    
-   
-
-    
-
-    
 	}
 
 	public EnemyBarrel(int w, int h) {
@@ -47,11 +41,10 @@ public class EnemyBarrel {
 				new Point(intx + (int) AbstractState.yOffset, inty + h + (int) AbstractState.yOffset),platforms[j])
 				|| Collide.playerPlatformCollide(new Point(intx + w + (int) AbstractState.yOffset, inty + (int) AbstractState.yOffset),platforms[j])
 				|| Collide.playerPlatformCollide(new Point(intx + w + (int) AbstractState.yOffset, inty + h + (int) AbstractState.yOffset),
-				platforms[j]))) { // right = true;//use for conveyer belt levels
+				platforms[j]))) { 
 				barrelfall = false;
-				//System.out.println("Pl = " + platformlevel);
 				platformlevel = platformlevel +1;
-				//System.out.println("Pl = " + platformlevel);
+				
 				break;
 
 			} else {

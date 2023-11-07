@@ -69,23 +69,18 @@ public class Stage1 extends AbstractState {
        mario.tick(platforms);
         
       for (int f = 0; barrels.length > f; f++) {
-    	  //rectangle around each barrel
     	  Rectangle r = new Rectangle((int)barrels[f].x, (int) barrels[f].y, 30, 30);
-    	  //if the rectangle contains the player point then the player loses a life and 
     	  if ( r.contains((int)Player.x+15, (int)Player.y+27) )   {
 	     	  System.out.println("Colide F"); 
 	     	  Player.y = 700; //respawns at the beginning of the game
 	     	  Player.x = 20;
 	     	  lives = lives -1; 
 		  }
-    	  //score rectangle (rectangle above each barrel)
     	  Rectangle r2 = new Rectangle((int)barrels[f].x-2, (int)barrels[f].y-70, 35, 90); //score rectangle
     	   if   ( r2.contains((int)Player.x+15, (int)Player.y+15)   )
     	  {  System.out.println("Score increase");     	 
-           
 		     score = score + 50; 
-              
-             
+        
 		  }
         }
         if (timeRemaining > 0) {

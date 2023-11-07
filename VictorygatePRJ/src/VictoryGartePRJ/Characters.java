@@ -23,11 +23,7 @@ public class Characters extends Rectangle {
 	g.setColor(Color.yellow); 
 	g.fillRect(x + 3, y - 35, 10, 10); 
 
-
-
-
 		
-			
 	g.setColor(Color.magenta); // Choose the color you prefer
 	g.fillRect((int) x - 310, (int) y - 92, width , height + 80);
 
@@ -39,11 +35,7 @@ public class Characters extends Rectangle {
 	g.setColor(Color.magenta); // Choose the color you prefer
 	g.fillRect((int) x - 310, (int) y - 92, width + 50, height );
 		
-		
-		
-		
-		
-
+	
 		//Door start
 		g.setColor(Color.red);
 		g.fillRect(x-550, y+550, width*2, height*3);
@@ -53,22 +45,7 @@ public class Characters extends Rectangle {
 		
 		
 	
-		// if (GamePanel.TickCounter > 4390) { //so when barrels hit drum, fire drawn
 		
-		// g.setColor(Color.red);
-		// g.fillRect(x-540, y+534, width-1, height);
-		// g.fillRect(x-548, y+540, width, height-10);
-		// g.fillRect(x-532, y+540, width, height-10);
-		// g.setColor(Color.orange);
-		// g.fillRect(x-538, y+540, width-5, height/2);
-		// g.fillRect(x-548, y+550, width, height/5);
-		// g.fillRect(x-532, y+550, width, height/5);
-		// g.setColor(Color.yellow);
-		// g.fillRect(x-535, y+545, width/2, height/2);
-		// g.setColor(Color.red);
-		// g.fillRect(x-532, y+550, width/5, height/4);
-		// }
-
 	}
 
 }

@@ -21,17 +21,17 @@ public class GamePanel extends JPanel implements KeyListener, Runnable { //Panel
 		t = new Thread(this);
 		t.start(); }            //calls the run method
 
-	public void run() { // method that will run the gameloop
+	public void run() { 
 		gamestates = new Manager(); 
 		long begin, wait;
-		while (running = true) { // when the game is running, this ploop controls what happens in the gameloop
+		while (running = true) { 
 			begin = System.nanoTime(); 
 			TickCounter = TickCounter + 1;
 			tick();
-			repaint(); // responsible for the graphics in the gameloop
-			wait = tTime - begin / 1000000;//puts into milliseconds 
+			repaint(); 
+			wait = tTime - begin / 1000000;
 			if (wait <= 0) {
-				wait = 5;// was 5
+				wait = 5;
 			}
 			try {
 				Thread.sleep(wait);
@@ -44,7 +44,7 @@ public class GamePanel extends JPanel implements KeyListener, Runnable { //Panel
 		g.clearRect(0, 0, 780, 680); // clears screen before next is drawn
 		gamestates.draw(g);     }     //draws level
 	
-	public void tick() { //updates the logic
+	public void tick() { 
 		gamestates.tick(); } 
 
 	public void keyPressed(KeyEvent k) {

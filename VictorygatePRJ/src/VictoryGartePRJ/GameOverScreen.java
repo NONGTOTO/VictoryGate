@@ -15,29 +15,29 @@ public class GameOverScreen extends AbstractState {
 	protected Characters chara2; 
 	
 	public void initial() {
-		chara = new Characters(120, 700); //draws characters in Characters Class onto end menu
-		chara2 = new Characters(680, 700); //draws characters in Characters Class onto end menu	
+		chara = new Characters(120, 700); 
+		chara2 = new Characters(680, 700); 
 	}
 	
 	public void keyPressed(int kp) {
-		if (kp == KeyEvent.VK_DOWN) { //if down arrow key pressed
-			select = select + 1; //goes through the options
+		if (kp == KeyEvent.VK_DOWN) { 
+			select = select + 1; 
 			if (select >= 3) {
 				select = 2;
 			}
-		} else if (kp == KeyEvent.VK_UP) { //if up arrow key pressed
-			select = select - 1; //goes through the options 
+		} else if (kp == KeyEvent.VK_UP) { 
+			select = select - 1;  
 			if (2 > select) {
 				select = 0;
 			}
 		}
 		if (kp == KeyEvent.VK_ENTER) { 
-			if (select == 0) { //restart
+			if (select == 0) {
 				gamestates.stages.push(new Stage1(gamestates));
 				Stage1.lives = 3; 
 				Stage1.win = 0; 
 				Stage1.score = 0; 
-			} else if (select == 2) { // exit choice on menu
+			} else if (select == 2) { 
 				System.exit(0);
 			}
 		}
@@ -62,19 +62,11 @@ public class GameOverScreen extends AbstractState {
 			g.setColor(Color.yellow);
 		    g.drawString("  YOU WIN!", 85, 150);
 		   
-		    
-		//     int xpoint4[] = {(400/2)-110, (360/2)-110, (375/2)-110, (400/2)-110, (425/2)-110, (440/2)-110}; // ..  ..  far left point, bttom point
-		//     int xpoint3[] = {400/2, 360/2, 375/2, 400/2, 425/2, 440/2}; // ..  ..  far left point, bttom point
-		//     int ypoint3[] = {680, 650, 630, 650, 630, 650};
-		//     g.setColor(Color.pink); 
-		//     g.fillPolygon(xpoint3, ypoint3, 6);
-		//     g.fillPolygon(xpoint4, ypoint3, 6);
-		//     g.setColor(Color.white);
-		     g.setFont(new Font("Helvetica", Font.BOLD, 30));
+			
+		    g.setFont(new Font("Helvetica", Font.BOLD, 30));
 		    g.drawString("  Thank you for play", 230, 700);
-		     g.setColor(Color.black);
-		// 	g.fillRect(0, 800, 2500, 2500); //fullscreen
-		// 	g.fillRect(900, 0, 2500, 2500); //fullscreen    
+		    g.setColor(Color.black);
+		  
 		}
 		if (Stage1.lives == 0) {
 			g.setFont(new Font("Helvetica", Font.BOLD, 120));
