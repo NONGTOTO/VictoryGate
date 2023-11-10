@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 
 public class MainMenu extends AbstractState {
-	protected Characters chara; 
+	
 	public MainMenu(Manager gamestates) {
 		super(gamestates);
 	}
@@ -11,7 +11,7 @@ public class MainMenu extends AbstractState {
 	protected int select = 0;
 
 	public void initial() {
-		chara = new Characters(655, 360); 
+		
 	}
 
 	public void keyPressed(int kp) {
@@ -55,8 +55,8 @@ public class MainMenu extends AbstractState {
 		
 		for (int j = 0; 3 > j; j++) {
 			int xpoint[] = {525,545,500,545}; 
-		    int ypoint[] = {430,420,430,440};//y co-ords of arrow by "Play"
-			int ypoint2[] = {570,560,570,580};//y co-ords of arrow by "Exit"
+		    int ypoint[] = {430,420,430,440};//"Play"
+			int ypoint2[] = {570,560,570,580};//"Exit"
 			if (select == j) {
 				g.setColor(Color.white); 
                 g.fillPolygon(xpoint, ypoint2, 4);

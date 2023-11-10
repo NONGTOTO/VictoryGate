@@ -1,5 +1,6 @@
 package VictoryGartePRJ;
 import java.awt.*;
+// คลาสแบบ abstract ที่แทนสถานะของเกม
 public abstract class AbstractState {// abstract class
 	public Manager gamestates; 
 	public static double yOffset, xOffset;

@@ -2,7 +2,7 @@ package VictoryGartePRJ;
 import java.awt.*;
 public class Ladder extends Rectangle {
 	public Ladder(int x3, int y3) {
-		setBounds(x3, y3, 60, 110); // size of ladder
+		setBounds(x3, y3, 60, 110); 
 	}
 
 	public void tick() {

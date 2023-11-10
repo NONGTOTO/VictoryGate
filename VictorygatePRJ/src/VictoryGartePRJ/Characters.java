@@ -14,7 +14,7 @@ public class Characters extends Rectangle {
 	// draws characters onto stage
 	public void draw(Graphics g) {
 						
-	
+	//door end
 	g.setColor(Color.magenta); 
 	g.fillRect(x -4, y - 78, width + 20, 90); 
 	g.fillRect(x -4, y - 75, width + 20, height * 4); 
@@ -23,16 +23,12 @@ public class Characters extends Rectangle {
 	g.setColor(Color.yellow); 
 	g.fillRect(x + 3, y - 35, 10, 10); 
 
-		
-	g.setColor(Color.magenta); // Choose the color you prefer
+	//Big F	
+	g.setColor(Color.magenta); 
 	g.fillRect((int) x - 310, (int) y - 92, width , height + 80);
-
-	
-	g.setColor(Color.magenta); // Choose the color you prefer
+	g.setColor(Color.magenta); 
 	g.fillRect((int) x - 310, (int) y - 52, width + 50, height );
-
-	
-	g.setColor(Color.magenta); // Choose the color you prefer
+	g.setColor(Color.magenta); 
 	g.fillRect((int) x - 310, (int) y - 92, width + 50, height );
 		
 	

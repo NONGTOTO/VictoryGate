@@ -2,6 +2,7 @@ package VictoryGartePRJ;
 import java.awt.*;
 import java.util.*;
 
+//จัดการกับสถานะต่าง ๆ ของเกม
 public class Manager {
 	public static boolean restarted;
 	

@@ -5,10 +5,10 @@ import java.awt.event.*;
 
 public class GamePanel extends JPanel implements KeyListener, Runnable { //Panel objects drawn onto
 	protected long tTime = 1000000 / 60;//60fps
-	protected Thread t;             
-	protected boolean running = false;
-	protected static int TickCounter;
-	protected Manager gamestates; 
+	protected Thread t;             // เป็นส่วนของการทำงานของ Thread สำหรับเกม
+	protected boolean running = false;//บอกว่า Thread ของเกมยังทำงานหรือไม่.
+	protected static int TickCounter;// นับจำนวนการทำการตั้งแต่เริ่มต้น.
+	protected Manager gamestates; //เป็นส่วนของการจัดการกับสถานะของเกม.
 
 	public GamePanel() {
 		setPreferredSize(new Dimension(1200, 1200)); 

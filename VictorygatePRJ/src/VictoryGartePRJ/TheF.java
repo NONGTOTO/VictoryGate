@@ -2,16 +2,22 @@ package VictoryGartePRJ;
 import java.awt.*;
 import java.awt.event.*;
 
-public class EnemyBarrel {
-	protected int platformlevel = 0;
+public class TheF {
+	protected int platformlevel = 0;//ระดับของแพลตฟอร์มที่ตัวละครอยู่
+	//บอกทิศทางการเคลื่อนที่ 
 	protected boolean left = false; 
 	protected boolean right = false;
-	protected boolean barrelfall;
+	//บอกว่าFหล่นมั้ย
+	protected boolean theF_fall;
+	//ตำแหน่งของตัวละครบนแกน X และ Y.
 	protected double x, y;
+	// ขนาดของตัวละคร.
 	protected static int w;
 	protected static int h;
+	// ความเร็วในการตกลง และ ความเร็วล่าสุดในการตกลง.
 	protected double downvelocity = 6; 
 	protected double currentfallvel = 0.2; 
+	//ใช้ในการตรวจสอบการชน
 	Rectangle r1 = new Rectangle((int) x, (int) y, w, h); 
 	
     public void draw(Graphics g) {
@@ -23,7 +29,7 @@ public class EnemyBarrel {
     g.setColor(Color.magenta); 
 	}
 
-	public EnemyBarrel(int w, int h) {
+	public TheF(int w, int h) {
 		x = 240;
 		y = 120; 
 		this.w = w;
@@ -42,19 +48,19 @@ public class EnemyBarrel {
 				|| Collide.playerPlatformCollide(new Point(intx + w + (int) AbstractState.yOffset, inty + (int) AbstractState.yOffset),platforms[j])
 				|| Collide.playerPlatformCollide(new Point(intx + w + (int) AbstractState.yOffset, inty + h + (int) AbstractState.yOffset),
 				platforms[j]))) { 
-				barrelfall = false;
+				theF_fall = false;
 				platformlevel = platformlevel +1;
 				
 				break;
 
 			} else {
-				barrelfall = true;
+				theF_fall = true;
 			}
 		}
 		
 		
 		if ((platformlevel > 260) && (1240 > platformlevel)) {
-			x = x + 2; //speed of barrel (right)
+			x = x + 2; 
 		}		
 		if ((2238 < platformlevel) && (3185 > platformlevel)) {
 			x = x + 2;
@@ -71,13 +77,13 @@ public class EnemyBarrel {
 		}
 
 		
-		if (barrelfall == true) {
+		if (theF_fall == true) {
 			y = y + currentfallvel / 2; 
 			if (downvelocity > currentfallvel) {
 				currentfallvel = currentfallvel + 0.1;
 		}
 		}
-		if (barrelfall == false) {
+		if (theF_fall == false) {
 			currentfallvel = 0.2;
 		}
 	}

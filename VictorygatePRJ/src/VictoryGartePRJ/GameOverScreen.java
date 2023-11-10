@@ -8,36 +8,39 @@ public class GameOverScreen extends AbstractState {
 	public GameOverScreen(Manager gamestates) {
 		super(gamestates);
 	}
-
+	// ตัวเลือกในเมนู
 	String[] choices2 = { "Restart", " ", "Exit Game" }; 
 	protected int select = 0;
-	protected Characters chara; 
-	protected Characters chara2; 
+	
 	
 	public void initial() {
-		chara = new Characters(120, 700); 
-		chara2 = new Characters(680, 700); 
+		
 	}
-	
+	// Method ที่รับ Input จากผู้เล่น
 	public void keyPressed(int kp) {
 		if (kp == KeyEvent.VK_DOWN) { 
 			select = select + 1; 
+			
 			if (select >= 3) {
 				select = 2;
 			}
 		} else if (kp == KeyEvent.VK_UP) { 
 			select = select - 1;  
+			
 			if (2 > select) {
 				select = 0;
 			}
 		}
+		// หากผู้เล่นเลือก Restart จะเริ่มเกมใหม่
 		if (kp == KeyEvent.VK_ENTER) { 
 			if (select == 0) {
 				gamestates.stages.push(new Stage1(gamestates));
 				Stage1.lives = 3; 
 				Stage1.win = 0; 
 				Stage1.score = 0; 
-			} else if (select == 2) { 
+			}
+			 // หากผู้เล่นเลือก Exit Game จะออกจากโปรแกรม
+			 else if (select == 2) { 
 				System.exit(0);
 			}
 		}
@@ -49,7 +52,8 @@ public class GameOverScreen extends AbstractState {
 		// background
 		g.setColor(Color.black);
 		g.fillRect(0, 0, 1900, 800); //size of black background
-					
+		
+		 // แสดงคะแนน
 	    g.setFont(new Font("Helvetica", Font.BOLD, 55));
 		g.setColor(Color.blue);
 		g.drawString("FINAL SCORE:", 85, 220);
@@ -75,11 +79,11 @@ public class GameOverScreen extends AbstractState {
 			
 				
 		}
-		// menu choices and colours
+		// menu choices 
 		for (int j = 0; 3 > j; j++) {
-			int xpoint[] = {605, 625, 580, 625}; ////x co-ords for both arrows
-		    int ypoint[] = {300, 290, 300, 310};//y co-ords of arrow by "Restart"
-			int ypoint2[] = {470, 460, 470, 480};//y co-ords of arrow by "Exit Game"
+			int xpoint[] = {605, 625, 580, 625}; // ตำแหน่ง x ของลูกศร
+		    int ypoint[] = {300, 290, 300, 310};// ตำแหน่ง y ของลูกศรใน "Restart"
+			int ypoint2[] = {470, 460, 470, 480};// ตำแหน่ง y ของลูกศรใน "Exit Game"
 					
 			if (select == j) {
 				g.setColor(Color.white); 

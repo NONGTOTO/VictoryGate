@@ -14,10 +14,10 @@ public class Stage1 extends AbstractState {
     public static int score = 0; 
     protected Background background; // black background 
     protected Platform[] platforms; // platforms 
-    protected Ladder[] ladders; // ladders 
+    protected Ladder[] ladders; // บันได 
     protected Characters[] charas; 
-    protected Player mario; // new player  
-    protected EnemyBarrel[] barrels;//enemy barrels 
+    protected Player player; // new player  
+    protected TheF[] F;//enemy F
     
 
 
@@ -42,62 +42,63 @@ public class Stage1 extends AbstractState {
         for (int i = 0; ladders.length > i; i++) { 
             ladders[i].tick(); 
         } 
-        mario.tick(ladders); 
-        mario.tick(charas); 
-        mario.tick(barrels); 
-        barrels[0].tick(platforms);  
+        player.tick(ladders); 
+        player.tick(charas); 
+        player.tick(F); 
+        F[0].tick(platforms);  
         
         if (GamePanel.TickCounter>600) { 
-            barrels[1].tick(platforms);  }     
+            F[1].tick(platforms);  }     
         if (GamePanel.TickCounter>1200) { 
-            barrels[2].tick(platforms);   }       
+            F[2].tick(platforms);   }       
         if (GamePanel.TickCounter>1800) { 
-            barrels[3].tick(platforms);   }
+            F[3].tick(platforms);   }
         if (GamePanel.TickCounter>2400) { 
-            barrels[4].tick(platforms);   } 
+            F[4].tick(platforms);   } 
         if (GamePanel.TickCounter>3000) { 
-            barrels[5].tick(platforms);   } 
+            F[5].tick(platforms);   } 
         if (GamePanel.TickCounter>3600) { 
-            barrels[6].tick(platforms);   } 
+            F[6].tick(platforms);   } 
         if (GamePanel.TickCounter>4200) { 
-            barrels[7].tick(platforms);   } 
+            F[7].tick(platforms);   } 
         if (GamePanel.TickCounter>4800) { 
-            barrels[8].tick(platforms);   }
+            F[8].tick(platforms);   }
         if (GamePanel.TickCounter>5200) { 
-            barrels[9].tick(platforms);   } 
+            F[9].tick(platforms);   } 
         
-       mario.tick(platforms);
+       player.tick(platforms);
         
-      for (int f = 0; barrels.length > f; f++) {
-    	  Rectangle r = new Rectangle((int)barrels[f].x, (int) barrels[f].y, 30, 30);
+      for (int f = 0; F.length > f; f++) {
+    	  Rectangle r = new Rectangle((int)F[f].x, (int) F[f].y, 30, 30);
     	  if ( r.contains((int)Player.x+15, (int)Player.y+27) )   {
 	     	  System.out.println("Colide F"); 
-	     	  Player.y = 700; //respawns at the beginning of the game
+	     	  Player.y = 700; //กลับไปจุดเริ่มต้น
 	     	  Player.x = 20;
 	     	  lives = lives -1; 
 		  }
-    	  Rectangle r2 = new Rectangle((int)barrels[f].x-2, (int)barrels[f].y-70, 35, 90); //score rectangle
+    	  Rectangle r2 = new Rectangle((int)F[f].x-2, (int)F[f].y-70, 35, 90); //score rectangle
     	   if   ( r2.contains((int)Player.x+15, (int)Player.y+15)   )
     	  {  System.out.println("Score increase");     	 
 		     score = score + 50; 
         
 		  }
         }
+        //กำหนดเวลา
         if (timeRemaining > 0) {
             timeRemaining--;
         } else {
-            // Time has run out, handle game over logic
+            
             lives = 0;
             gamestates.stages.push(new GameOverScreen(gamestates));
         }
       }
     
     public void initial() { 
-        barrels=new EnemyBarrel[10]; 
-        background = new Background(0, 0);// position of background 
-        mario = new Player(30, 30); //creates Mario //size of mario 
+        F=new TheF[10]; 
+        background = new Background(0, 0);//background 
+        player = new Player(30, 30); //สร้างตัวละคร 
         for (int i=0;i<10;i++) { 
-            barrels[i] = new EnemyBarrel(30, 30); //creates barrel1 //sizes 
+            F[i] = new TheF(30, 30); //สร้างf
         } 
         charas = new Characters[1];  
         charas[0] = new Characters(580, 140); 
@@ -124,11 +125,11 @@ public class Stage1 extends AbstractState {
     } 
  
     public void keyPressed(int k) { 
-        mario.keyPressed(k);  
+        player.keyPressed(k);  
     } 
  
     public void keyReleased(int k) { 
-        mario.keyReleased(k); 
+        player.keyReleased(k); 
     } 
  
     protected void draw(Graphics g) { 
@@ -136,44 +137,47 @@ public class Stage1 extends AbstractState {
         g.setColor(Color.black); 
 		g.fillRect(0, 800, 2500, 2500); 
 		g.fillRect(1200, 0, 2500, 2500); //fullscreen
-        for (int j = 0; platforms.length > j; j++) { // draws the platforms 
+        for (int j = 0; platforms.length > j; j++) { // วาด platforms 
             platforms[j].draw(g); } 
-        for (int i = 0; ladders.length > i; i++) { // draws the ladders 
+        for (int i = 0; ladders.length > i; i++) { // วาดบันได 
             ladders[i].draw(g); }
-        barrels[0].draw(g); // draws the barrel1      
+        F[0].draw(g); // วาดF 9ตัว
         if (GamePanel.TickCounter>600) { 
-            barrels[1].draw(g); }// draws the barrel2                   
+            F[1].draw(g); }                 
         if (GamePanel.TickCounter>1200) { 
-            barrels[2].draw(g); } // draws the barrel3     
+            F[2].draw(g); }     
         if (GamePanel.TickCounter>1800) { 
-            barrels[3].draw(g); }// draws the barrel4 
+            F[3].draw(g); }
         if (GamePanel.TickCounter>2400) { 
-            barrels[4].draw(g); } // draws the barrel5 
+            F[4].draw(g); } 
         if (GamePanel.TickCounter>3000) { 
-            barrels[5].draw(g); }// draws the barrel6 
+            F[5].draw(g); }
         if (GamePanel.TickCounter>3600) { 
-            barrels[6].draw(g); }// draws the barrel7 
+            F[6].draw(g); }
         if (GamePanel.TickCounter>4200) { 
-        	barrels[7].draw(g); }
+        	F[7].draw(g); }
         if (GamePanel.TickCounter>4800) { 
-        	barrels[8].draw(g); }
-        if (GamePanel.TickCounter>5200) { 
-        	barrels[9].draw(g);  } 
+        	F[8].draw(g); }
+        
 
 
-            //time
+            //แสดงเวลา
             g.setColor(Color.white);
             g.setFont(new Font("Helvetica", Font.BOLD, 20));
             g.drawString("Time: " + timeRemaining, 450, 30);
          
+           
         for (int o = 0; charas.length > o; o++) { 
             charas[o].draw(g);
             g.setColor(Color.white);
+            //แสดงค่าชีวิต
 		    g.setFont(new Font("Helvetica", Font.BOLD, 20));
 			g.drawString("Lives: " + lives, 780, 20);
+            //แสดงคะแนน
 			g.setColor(Color.magenta);
 		    g.setFont(new Font("Helvetica", Font.BOLD, 20));
 			g.drawString("SCORE", 10, 25);
+            //แสดงคะแนนเริ่มต้น
 			g.setColor(Color.white);
 			g.drawString("000" + score, 20, 50);
 			
@@ -184,7 +188,7 @@ public class Stage1 extends AbstractState {
             	gamestates.stages.push(new GameOverScreen(gamestates)); 
             } 
         } 
-        mario.draw(g); 
+        player.draw(g); 
         
       
         if (Player.y >= 850) {
