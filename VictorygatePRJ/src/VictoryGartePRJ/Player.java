@@ -54,9 +54,10 @@ public class Player {
 	// ทำงานเมื่อปุ่มถูกปล่อย
 	public void keyReleased(int k) {	}
 
+	//ตำแหน่งเริ่มต้นของผู้เล่น
 	public Player(int w, int h) {  
-		x = 100; // where horizontally the player character will start
-		y = 700; // where vertically the player character will start
+		x = 100; 
+		y = 700; 
 		this.w = w;
 		this.h = h;
 	}

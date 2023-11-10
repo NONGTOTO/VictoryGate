@@ -73,7 +73,7 @@ public class Stage1 extends AbstractState {
     	  if ( r.contains((int)Player.x+15, (int)Player.y+27) )   {
 	     	  System.out.println("Colide F"); 
 	     	  Player.y = 700; //กลับไปจุดเริ่มต้น
-	     	  Player.x = 20;
+	     	  Player.x = 100;
 	     	  lives = lives -1; 
 		  }
     	  Rectangle r2 = new Rectangle((int)F[f].x-2, (int)F[f].y-70, 35, 90); //score rectangle
